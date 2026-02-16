@@ -91,9 +91,9 @@ export function Contact() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6 }}
-        className="text-center max-w-6xl mx-auto"
+        className="text-center max-w-6xl mx-auto mb-8 md:mb-0"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-3">
           Get in{" "}
@@ -195,7 +195,7 @@ export function Contact() {
       </motion.div>
 
       {/* Mobile: Icon grid */}
-      <div className="md:hidden max-w-sm mx-auto">
+      <div className="md:hidden max-w-sm mx-auto mt-8">
         {/* Email button */}
         <motion.a
           href={`mailto:${EMAIL}`}
@@ -212,7 +212,7 @@ export function Contact() {
         </motion.a>
 
         {/* Social grid */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="flex flex-wrap justify-center gap-3">
           {SOCIALS.map((social, i) => (
             <motion.a
               key={social.label}
@@ -223,7 +223,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group flex flex-col items-center gap-1.5 py-3 rounded-xl bg-surface border border-white/10 hover:border-primary/30 transition-all duration-300"
+              className="group flex flex-col items-center gap-1.5 py-3 rounded-xl bg-surface border border-white/10 hover:border-primary/30 transition-all duration-300 w-20"
               aria-label={social.label}
             >
               <social.icon className="w-5 h-5 text-text-secondary group-hover:text-primary transition-colors duration-300" />

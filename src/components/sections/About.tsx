@@ -75,12 +75,12 @@ export function About() {
   const Icon = block.icon;
 
   return (
-    <section id="about" className="pt-16 pb-28 px-6">
+    <section id="about" className="pt-16 pb-24 px-6">
       {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6 }}
         className="text-center max-w-6xl mx-auto mb-12"
       >
@@ -112,7 +112,7 @@ export function About() {
           className="grid grid-cols-[1fr_1fr] gap-12 items-center"
         >
           {/* Left: 3D scene */}
-          <div style={{ height: "450px" }}>
+          <div style={{ height: "550px" }}>
             <MorphingScene shapeIndexRef={shapeIndexRef} />
           </div>
 
@@ -130,7 +130,7 @@ export function About() {
               </button>
 
               {/* Card */}
-              <div className="relative flex-1 overflow-hidden py-4 -my-4 px-2 -mx-2" style={{ minHeight: "180px" }}>
+              <div className="relative flex-1 overflow-hidden py-4 -my-4 px-2 -mx-2" style={{ minHeight: "220px" }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={activeIndex}
@@ -206,7 +206,7 @@ function MobileCard({
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group p-5 rounded-xl bg-surface/80 backdrop-blur-sm border border-white/10 shadow-[0_4px_15px_rgba(76,175,80,0.08)]"
     >

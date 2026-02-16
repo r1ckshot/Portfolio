@@ -180,25 +180,28 @@ export function Projects() {
 
   const filtered = PROJECTS.filter((p) => p.category === activeTab);
 
-  // Show link after card animations complete; reset when leaving viewport or switching tabs
+  // Show link after card animations complete; reset only when switching tabs
   useEffect(() => {
     setShowLink(false);
-    if (!cardsInView) return;
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (!cardsInView || showLink) return;
     const totalMs =
       (0.15 + (filtered.length - 1) * 0.15 + 0.6) * 1000 + 200;
     const timer = setTimeout(() => setShowLink(true), totalMs);
     return () => clearTimeout(timer);
-  }, [cardsInView, activeTab, filtered.length]);
+  }, [cardsInView, showLink, filtered.length]);
 
   return (
-    <section id="projects" className="py-16 px-6">
+    <section id="projects" className="pt-16 pb-16 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
-          variants={sectionFade}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -215,10 +218,10 @@ export function Projects() {
 
         {/* Tabs */}
         <motion.div
-          variants={sectionFade}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
           className="flex justify-center gap-2 mb-4"
         >
           {TABS.map((tab) => (
@@ -248,11 +251,11 @@ export function Projects() {
               initial="hidden"
               whileInView="visible"
               exit="exit"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.3 }}
               className={`grid gap-6 ${
                 filtered.length >= 3
                   ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                  : "grid-cols-1 max-w-xl mx-auto mb-6"
+                  : "grid-cols-1 max-w-xl mx-auto"
               }`}
             >
               {filtered.map((project) => (
