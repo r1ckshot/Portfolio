@@ -193,3 +193,61 @@ html {
   animation: float-drift ease-in-out infinite;
   box-shadow: 0 0 6px var(--primary);
 }
+
+/* Solar system orbits for Contact section */
+@keyframes solar-orbit {
+  from { transform: rotate(var(--start, 0deg)); }
+  to { transform: rotate(calc(var(--start, 0deg) + 360deg)); }
+}
+
+@keyframes solar-orbit-reverse {
+  from { transform: rotate(var(--start, 0deg)); }
+  to { transform: rotate(calc(var(--start, 0deg) - 360deg)); }
+}
+
+@keyframes counter-rotate {
+  from { transform: rotate(calc(-1 * var(--start, 0deg))); }
+  to { transform: rotate(calc(-1 * var(--start, 0deg) - 360deg)); }
+}
+
+@keyframes counter-rotate-reverse {
+  from { transform: rotate(calc(-1 * var(--start, 0deg))); }
+  to { transform: rotate(calc(-1 * var(--start, 0deg) + 360deg)); }
+}
+
+@keyframes center-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.3), 0 0 60px rgba(76, 175, 80, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(76, 175, 80, 0.5), 0 0 80px rgba(76, 175, 80, 0.2); }
+}
+
+.solar-system {
+  position: relative;
+}
+
+.solar-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: solar-orbit var(--duration) linear infinite;
+}
+
+.solar-orbit-ring.reverse {
+  animation-name: solar-orbit-reverse;
+}
+
+.solar-icon-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  translate: -50% -50%;
+  pointer-events: auto;
+  animation: counter-rotate var(--duration) linear infinite;
+}
+
+.solar-orbit-ring.reverse .solar-icon-wrapper {
+  animation-name: counter-rotate-reverse;
+}
+
+.solar-center {
+  animation: center-pulse 3s ease-in-out infinite;
+}
