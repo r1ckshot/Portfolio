@@ -272,7 +272,9 @@ export function Projects() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, transition: { duration: 0.15 } }}
                 transition={{ duration: 1, ease: "easeOut" as const }}
-                className="flex justify-center mt-4"
+                className={`flex justify-center ${
+                  filtered.length >= 3 ? "mt-4" : "mt-8"
+                }`}
               >
                 <a
                   href="https://github.com/r1ckshot"

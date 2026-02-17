@@ -284,7 +284,7 @@ export function MorphingScene({
 }) {
   return (
     <Canvas
-      camera={{ position: [0, 0, 5.5], fov: 50 }}
+      camera={{ position: [0, 0, 6.5], fov: 50 }}
       style={{ width: "100%", height: "100%" }}
       gl={{ alpha: true, antialias: true }}
     >
