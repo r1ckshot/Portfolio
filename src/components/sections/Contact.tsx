@@ -78,8 +78,8 @@ const SOCIALS: SocialLink[] = [
 
 const ORBIT_CONFIG = [
   { radius: 125, duration: "14s", reverse: false },
-  { radius: 190, duration: "20s", reverse: true },
-  { radius: 255, duration: "28s", reverse: false },
+  { radius: 185, duration: "20s", reverse: true },
+  { radius: 250, duration: "28s", reverse: false },
 ];
 
 const EMAIL = "kapusticnyk.com@gmail.com";
@@ -93,7 +93,7 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6 }}
-        className="text-center max-w-6xl mx-auto mb-8 md:mb-0"
+        className="text-center max-w-6xl mx-auto mb-6 md:mb-[-10px]"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-3">
           Get in{" "}
@@ -101,7 +101,7 @@ export function Contact() {
             Touch
           </span>
         </h2>
-        <p className="text-text-secondary max-w-lg mx-auto">
+        <p className="text-base md:text-lg text-text-secondary max-w-lg mx-auto">
           Feel free to reach out — whether it&apos;s a project idea, a question,
           or just to say hi.
         </p>
@@ -161,10 +161,10 @@ export function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="group relative flex items-center justify-center w-11 h-11 rounded-full bg-surface border border-white/10 hover:border-primary/50 hover:scale-125 hover:bg-primary/10 transition-all duration-300"
+                    className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-white/10 hover:border-primary/50 hover:scale-125 hover:bg-primary/10 transition-all duration-300"
                   >
                     <social.icon className="w-5 h-5 text-text-secondary group-hover:text-primary transition-colors duration-300" />
-                    <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+                    <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
                       {social.label}
                     </span>
                   </a>
@@ -188,14 +188,14 @@ export function Contact() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-center text-text-secondary -mt-2"
+          className="text-center text-lg text-text-secondary mt-1"
         >
           Always open to new opportunities and interesting conversations.
         </motion.p>
       </motion.div>
 
       {/* Mobile: Icon grid */}
-      <div className="md:hidden max-w-sm mx-auto mt-8">
+      <div className="md:hidden max-w-sm mx-auto mt-6">
         {/* Email button */}
         <motion.a
           href={`mailto:${EMAIL}`}
@@ -227,7 +227,7 @@ export function Contact() {
               aria-label={social.label}
             >
               <social.icon className="w-5 h-5 text-text-secondary group-hover:text-primary transition-colors duration-300" />
-              <span className="text-[10px] text-text-secondary group-hover:text-primary transition-colors duration-300">
+              <span className="text-xs text-text-secondary group-hover:text-primary transition-colors duration-300">
                 {social.label}
               </span>
             </motion.a>
@@ -241,7 +241,7 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="md:hidden text-center text-text-secondary mt-6"
+        className="md:hidden text-center text-lg text-text-secondary mt-4"
       >
         Always open to new opportunities and interesting conversations.
       </motion.p>

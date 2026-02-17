@@ -194,7 +194,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" as const }}
           className="flex justify-center mb-12"
         >
-          <span className="px-5 py-2.5 rounded-full text-xs font-medium bg-primary/10 text-primary-light border border-primary/20 animate-pulse-glow">
+          <span className="px-5 py-2.5 rounded-full text-sm font-medium bg-primary/10 text-primary-light border border-primary/20 animate-pulse-glow">
             Available for new opportunities
           </span>
         </motion.div>
@@ -223,7 +223,7 @@ export function Hero() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-lg text-text-secondary max-w-lg mb-8 mx-auto lg:mx-0"
+              className="text-lg md:text-xl text-text-secondary max-w-lg mb-8 mx-auto lg:mx-0"
             >
               Fresh graduate engineer who combines creativity with AI-powered
               development. I build full-stack applications with clean code,
@@ -283,7 +283,7 @@ export function Hero() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="mt-6"
         >
-          <p className="text-xs text-text-secondary text-center mb-4 uppercase tracking-widest">
+          <p className="text-sm text-text-secondary text-center mb-4 uppercase tracking-widest">
             Tech I work with
           </p>
           <div className="flex flex-col gap-3">

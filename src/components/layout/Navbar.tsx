@@ -42,7 +42,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center">
+    <nav className="fixed top-3 left-0 right-0 z-50 flex justify-center">
       <div className="flex gap-8 text-sm px-8 py-3 rounded-full backdrop-blur-md bg-surface/70 border border-white/10">
         {NAV_ITEMS.map((item) => (
           <a

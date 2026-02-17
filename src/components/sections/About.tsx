@@ -90,7 +90,7 @@ export function About() {
             Me
           </span>
         </h2>
-        <p className="text-text-secondary max-w-lg mx-auto">
+        <p className="text-base md:text-lg text-text-secondary max-w-lg mx-auto">
           A bit about who I am, how I work, and what drives me forward.
         </p>
       </motion.div>
@@ -153,7 +153,7 @@ export function About() {
                         {block.title}
                       </h3>
                     </div>
-                    <p className="text-sm text-text-secondary leading-relaxed">
+                    <p className="text-base text-text-secondary leading-relaxed">
                       {block.text}
                     </p>
                   </motion.div>
@@ -216,7 +216,7 @@ function MobileCard({
         </div>
         <h3 className="text-xl font-semibold text-text group-hover:text-primary transition-colors duration-300">{block.title}</h3>
       </div>
-      <p className="text-sm text-text-secondary leading-relaxed">
+      <p className="text-base text-text-secondary leading-relaxed">
         {block.text}
       </p>
     </motion.div>

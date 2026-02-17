@@ -151,7 +151,7 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Description */}
-      <p className="text-sm text-text-secondary leading-relaxed mb-4 flex-1">
+      <p className="text-base text-text-secondary leading-relaxed mb-4 flex-1">
         {project.description}
       </p>
 
@@ -160,7 +160,7 @@ function ProjectCard({ project }: { project: Project }) {
         {project.tech.map((t) => (
           <span
             key={t}
-            className="px-2 py-0.5 text-[11px] rounded-full bg-primary/8 text-primary-light border border-primary/15"
+            className="px-2 py-0.5 text-xs rounded-full bg-primary/8 text-primary-light border border-primary/15"
           >
             {t}
           </span>
@@ -210,7 +210,7 @@ export function Projects() {
               Projects
             </span>
           </h2>
-          <p className="text-text-secondary max-w-lg mx-auto">
+          <p className="text-base md:text-lg text-text-secondary max-w-lg mx-auto">
             A collection of projects I&apos;ve built and contributed to,
             spanning web apps, desktop tools, and collaborative systems.
           </p>
@@ -243,7 +243,7 @@ export function Projects() {
         </motion.div>
 
         {/* Project cards */}
-        <div ref={cardsAreaRef} className="min-h-[28rem]">
+        <div ref={cardsAreaRef}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -255,38 +255,30 @@ export function Projects() {
               className={`grid gap-6 ${
                 filtered.length >= 3
                   ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                  : "grid-cols-1 max-w-xl mx-auto"
+                  : "grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto mt-16 mb-24"
               }`}
             >
               {filtered.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
-            </motion.div>
-          </AnimatePresence>
 
-          {/* View all on GitHub — appears after card animations finish */}
-          <AnimatePresence>
-            {showLink && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, transition: { duration: 0.15 } }}
-                transition={{ duration: 1, ease: "easeOut" as const }}
-                className={`flex justify-center ${
-                  filtered.length >= 3 ? "mt-4" : "mt-8"
-                }`}
+              {/* GitHub button as last card */}
+              <motion.a
+                href="https://github.com/r1ckshot"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={cardVariants}
+                className="group flex flex-col items-center justify-center h-full min-h-[200px] p-5 rounded-xl bg-surface/50 border border-white/10 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-primary/8"
               >
-                <a
-                  href="https://github.com/r1ckshot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-5 py-2.5 rounded-full text-sm text-text-secondary border border-white/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                >
+                <FiExternalLink className="w-12 h-12 text-text group-hover:text-primary mb-4 group-hover:scale-110 transition-all duration-300" />
+                <span className="text-lg font-semibold text-text group-hover:text-primary transition-colors duration-300">
                   View all on GitHub
-                  <FiExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                </a>
-              </motion.div>
-            )}
+                </span>
+                <span className="text-sm text-text-secondary mt-2">
+                  Explore more projects
+                </span>
+              </motion.a>
+            </motion.div>
           </AnimatePresence>
         </div>
       </div>
