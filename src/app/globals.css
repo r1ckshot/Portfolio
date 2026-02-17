@@ -185,11 +185,8 @@ html {
 
 .floating-particle {
   position: absolute;
-  width: 3px;
-  height: 3px;
   border-radius: 50%;
   background: var(--primary-light);
-  opacity: 0.4;
   animation: float-drift ease-in-out infinite;
   box-shadow: 0 0 6px var(--primary);
 }
@@ -251,3 +248,4 @@ html {
 .solar-center {
   animation: center-pulse 3s ease-in-out infinite;
 }
+
