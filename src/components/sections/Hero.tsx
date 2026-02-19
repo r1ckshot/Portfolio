@@ -8,24 +8,15 @@ import {
   SiTypescript,
   SiPython,
   SiCplusplus,
-  SiSwift,
-  SiPhp,
   SiSpring,
   SiReact,
   SiNextdotjs,
   SiNodedotjs,
   SiExpress,
   SiTailwindcss,
-  SiBootstrap,
-  SiJquery,
-  SiQt,
   SiMysql,
   SiMongodb,
   SiHibernate,
-  SiApache,
-  SiNginx,
-  SiJest,
-  SiTestinglibrary,
   SiGit,
   SiGithub,
   SiDocker,
@@ -43,7 +34,7 @@ interface TechItem {
   color: string;
 }
 
-const TECH_ROW_1: TechItem[] = [
+const TECH_ITEMS: TechItem[] = [
   { name: "Java", icon: FaJava, color: "#ED8B00" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
@@ -59,20 +50,8 @@ const TECH_ROW_1: TechItem[] = [
   { name: "Git", icon: SiGit, color: "#F05032" },
   { name: "C++", icon: SiCplusplus, color: "#00599C" },
   { name: "Express.js", icon: SiExpress, color: "#ffffff" },
-];
-
-const TECH_ROW_2: TechItem[] = [
-  { name: "PHP", icon: SiPhp, color: "#777BB4" },
-  { name: "Swift", icon: SiSwift, color: "#FA7343" },
-  { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
-  { name: "jQuery", icon: SiJquery, color: "#0769AD" },
-  { name: "Qt", icon: SiQt, color: "#41CD52" },
-  { name: "Hibernate", icon: SiHibernate, color: "#59666C" },
-  { name: "Jest", icon: SiJest, color: "#C21325" },
-  { name: "Testing Library", icon: SiTestinglibrary, color: "#E33332" },
-  { name: "Apache", icon: SiApache, color: "#D22128" },
-  { name: "Nginx", icon: SiNginx, color: "#009639" },
   { name: "GitHub", icon: SiGithub, color: "#ffffff" },
+  { name: "Hibernate", icon: SiHibernate, color: "#59666C" },
   { name: "Postman", icon: SiPostman, color: "#FF6C37" },
   { name: "Swagger", icon: SiSwagger, color: "#85EA2D" },
   { name: "Gradle", icon: SiGradle, color: "#02303A" },
@@ -91,27 +70,19 @@ const fadeUp: Variants = {
 function TechBadge({ tech }: { tech: TechItem }) {
   const Icon = tech.icon;
   return (
-    <span className="flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-surface border border-white/10 text-text-secondary whitespace-nowrap hover:border-primary/30 transition-all duration-300 cursor-default">
-      <Icon style={{ color: tech.color }} className="w-4 h-4 flex-shrink-0" />
+    <span className="flex items-center gap-3 px-6 py-3 text-base rounded-full bg-surface border border-white/10 text-text-secondary whitespace-nowrap hover:border-primary/30 transition-all duration-300 cursor-default">
+      <Icon style={{ color: tech.color }} className="w-5 h-5 flex-shrink-0" />
       {tech.name}
     </span>
   );
 }
 
-function TechMarquee({
-  items,
-  reverse = false,
-}: {
-  items: TechItem[];
-  reverse?: boolean;
-}) {
+function TechMarquee({ items }: { items: TechItem[] }) {
   const doubled = [...items, ...items];
 
   return (
     <div className="relative overflow-hidden marquee-container">
-      <div
-        className={`flex gap-3 w-max ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
-      >
+      <div className="flex gap-4 w-max animate-marquee">
         {doubled.map((tech, i) => (
           <TechBadge key={`${tech.name}-${i}`} tech={tech} />
         ))}
@@ -276,7 +247,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Tech stack - two row marquee */}
+        {/* Tech stack - single larger marquee row */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -286,10 +257,7 @@ export function Hero() {
           <p className="text-sm text-text-secondary text-center mb-4 uppercase tracking-widest">
             Tech I work with
           </p>
-          <div className="flex flex-col gap-3">
-            <TechMarquee items={TECH_ROW_1} />
-            <TechMarquee items={TECH_ROW_2} reverse />
-          </div>
+          <TechMarquee items={TECH_ITEMS} />
         </motion.div>
       </div>
     </section>
