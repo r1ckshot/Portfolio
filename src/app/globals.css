@@ -249,3 +249,8 @@ html {
   animation: center-pulse 3s ease-in-out infinite;
 }
 
+.explore-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(76, 175, 80, 0.08), 0 8px 10px -6px rgba(76, 175, 80, 0.08);
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
