@@ -16,7 +16,7 @@ export function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 20);
 
       const isAtBottom =
         window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
