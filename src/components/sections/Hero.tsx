@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LogoLoop } from "@/components/ui/LogoLoop";
 import { FiArrowRight, FiMail } from "react-icons/fi";
+import ShinyText from "@/components/ui/ShinyText";
 import {
   SiJavascript,
   SiTypescript,
@@ -207,7 +208,9 @@ export function Hero() {
             >
               <span className="word inline-block" style={{ opacity: 0, transform: 'translateY(36px)' }}>Building</span>{" "}
               <span className="word inline-block" style={{ opacity: 0, transform: 'translateY(36px)' }}>Digital</span>{" "}
-              <span className="word inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light" style={{ opacity: 0, transform: 'translateY(36px)' }}>Solutions</span>
+              <span className="word inline-block" style={{ opacity: 0, transform: 'translateY(36px)' }}>
+                <ShinyText text="Solutions" speed={4} color="#4CAF50" shineColor="#c8ffc8" />
+              </span>
               <br />
               <span className="word inline-block" style={{ opacity: 0, transform: 'translateY(36px)' }}>with</span>{" "}
               <span className="word inline-block" style={{ opacity: 0, transform: 'translateY(36px)' }}>Modern</span>{" "}
