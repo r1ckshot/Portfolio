@@ -4,6 +4,8 @@ import { useRef, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiUser, FiCpu, FiHeart, FiStar, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FaDna, FaHeart, FaCross } from "react-icons/fa";
+import { GiKnot } from "react-icons/gi";
 import type { IconType } from "react-icons";
 
 const MorphingScene = dynamic(
@@ -16,23 +18,30 @@ const ABOUT_BLOCKS = [
   {
     icon: FiUser,
     title: "Who I Am",
-    text: "A fresh graduate engineer from Ukraine, currently pursuing my Master's in Poland. Full-stack developer who loves building things end-to-end — from databases and APIs to interactive frontends. Languages: Ukrainian (Native), Polish (Fluent), English (Fluent), Russian (Fluent).",
+    text: "Fresh graduate engineer from Ukraine, studying my Master's in Poland. I build full-stack apps end-to-end — from databases and APIs to interactive frontends. Speak Ukrainian, Polish, English, and Russian.",
   },
   {
     icon: FiCpu,
     title: "AI & Development",
-    text: "I openly use AI as a tool in my workflow — it helps me move faster and explore ideas efficiently. But I always understand what's under the hood. AI accelerates, solid fundamentals drive.",
+    text: "I use AI openly in my workflow — it speeds things up and helps me explore ideas. I understand most of what's under the hood, and I keep learning the rest. AI is a tool; fundamentals are the foundation.",
   },
   {
     icon: FiHeart,
     title: "Beyond Code",
-    text: "Passionate about fitness, healthy eating, and cooking. I thrive in team environments and genuinely enjoy collaborating — good communication is just as important as good code.",
+    text: "Outside work I'm into fitness, healthy eating, and cooking. I thrive in teams — good communication is just as important as good code. I genuinely enjoy the people side of building things.",
   },
   {
     icon: FiStar,
     title: "Values",
-    text: "Honesty, continuous growth, and faith guide me. I'm a practicing Christian, and that shapes how I approach both life and work.",
+    text: "Honesty and continuous growth guide how I work. I'm a practicing Christian, and my faith shapes how I approach both life and work. \"Commit your work to the Lord, and your plans will be established.\" — Proverbs 16:3",
   },
+];
+
+const SHAPE_ICONS = [
+  <GiKnot key="knot" className="w-full h-full" />,
+  <FaDna key="dna" className="w-full h-full" />,
+  <FaHeart key="heart" className="w-full h-full" />,
+  <FaCross key="cross" className="w-full h-full" />,
 ];
 
 const slideVariants = {
@@ -170,19 +179,21 @@ export function About() {
               </button>
             </div>
 
-            {/* Dot indicators */}
-            <div className="flex gap-2 mt-5">
-              {ABOUT_BLOCKS.map((_, i) => (
+            {/* Shape indicators */}
+            <div className="flex gap-4 mt-6">
+              {SHAPE_ICONS.map((icon, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i)}
                   aria-label={`Go to ${ABOUT_BLOCKS[i].title}`}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  className={`w-8 h-8 transition-all duration-300 ${
                     i === activeIndex
-                      ? "bg-primary scale-110"
-                      : "bg-white/20 hover:bg-white/40"
+                      ? "text-primary scale-110 drop-shadow-[0_0_6px_rgba(76,175,80,0.6)]"
+                      : "text-white/25 hover:text-white/50"
                   }`}
-                />
+                >
+                  {icon}
+                </button>
               ))}
             </div>
           </div>
