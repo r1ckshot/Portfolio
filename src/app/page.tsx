@@ -8,7 +8,7 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
-import { FloatingParticles } from "@/components/ui/FloatingParticles";
+import { GridWave } from "@/components/ui/GridWave";
 
 export default function Home() {
   useEffect(() => {
@@ -27,12 +27,21 @@ export default function Home() {
 
   return (
     <>
-      {/* Global floating particles background */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <FloatingParticles count={30} includeEdges />
+      <GridWave />
+
+      {/* Page-wide ambient blobs */}
+      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div
+          className="absolute -top-60 -left-60 w-[900px] h-[900px] rounded-full animate-blob-1"
+          style={{ background: "radial-gradient(circle, rgba(76,175,80,0.07) 0%, transparent 70%)" }}
+        />
+        <div
+          className="absolute -bottom-60 -right-60 w-[800px] h-[800px] rounded-full animate-blob-2"
+          style={{ background: "radial-gradient(circle, rgba(76,175,80,0.05) 0%, transparent 70%)" }}
+        />
       </div>
 
-      <Navbar />
+<Navbar />
       <main>
         <Hero />
         <Projects />

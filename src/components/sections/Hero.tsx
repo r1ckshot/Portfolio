@@ -160,31 +160,8 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center"
     >
-      {/* Animated blobs */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-[15%] -left-20 w-[400px] h-[400px] rounded-full bg-primary/12 blur-[140px] animate-blob-1" />
-        <div className="absolute top-[45%] -left-10 w-[300px] h-[300px] rounded-full bg-primary-dark/15 blur-[120px] animate-blob-2" />
-        <div className="absolute top-[5%] -right-20 w-[350px] h-[350px] rounded-full bg-primary/8 blur-[140px] animate-blob-3" />
-      </div>
-
-      {/* Floating particles scattered across hero */}
-      <div className="absolute inset-0 -z-5 overflow-hidden pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="floating-particle"
-            style={{
-              left: `${10 + (i * 37) % 80}%`,
-              top: `${5 + (i * 53) % 85}%`,
-              animationDelay: `${i * 0.7}s`,
-              animationDuration: `${4 + (i % 4) * 2}s`,
-            }}
-          />
-        ))}
-      </div>
-
       <div className="max-w-6xl mx-auto px-6 w-full pt-20 pb-8">
         {/* Available badge - centered */}
         <motion.div
