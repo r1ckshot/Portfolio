@@ -6,7 +6,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LogoLoop } from "@/components/ui/LogoLoop";
-import { FiArrowRight, FiMail } from "react-icons/fi";
+import { FiArrowRight, FiMail, FiDownload } from "react-icons/fi";
 import ShinyText from "@/components/ui/ShinyText";
 import {
   SiJavascript,
@@ -176,7 +176,7 @@ export function Hero() {
         </motion.div>
 
         {/* Main content - text left, photo right */}
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col-reverse lg:flex-row items-center lg:items-end gap-12 lg:gap-16">
           {/* Left - Text */}
           <div className="flex-1 text-center lg:text-left">
             <h1
@@ -235,7 +235,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.0, ease: "easeOut" as const, delay: 0.9 }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 flex flex-col items-center gap-5"
           >
             <div className="relative w-[290px] h-[290px] md:w-[360px] md:h-[360px]">
               <ParticleOrb />
@@ -249,6 +249,14 @@ export function Hero() {
                 />
               </div>
             </div>
+            <a
+              href="/Portfolio/cv.pdf"
+              download
+              className="group flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-text hover:border-primary/50 hover:text-primary transition-all duration-300"
+            >
+              Download CV
+              <FiDownload className="download-icon w-4 h-4" />
+            </a>
           </motion.div>
         </div>
 
