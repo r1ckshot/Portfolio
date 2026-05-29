@@ -164,6 +164,15 @@ body::after {
   animation: pulse-glow 2.5s ease-in-out infinite;
 }
 
+@keyframes pulse-glow-strong {
+  0%, 100% { box-shadow: 0 0 4px 1px rgba(76, 175, 80, 0.4); transform: scale(1); }
+  50%       { box-shadow: 0 0 10px 4px rgba(76, 175, 80, 0.7), 0 0 20px 6px rgba(76, 175, 80, 0.2); transform: scale(1.15); }
+}
+
+.animate-pulse-glow-strong {
+  animation: pulse-glow-strong 2.5s ease-in-out infinite;
+}
+
 
 /* Solar system orbits for Contact section */
 @keyframes solar-orbit {
@@ -221,6 +230,16 @@ body::after {
 
 .solar-center {
   animation: center-pulse 3s ease-in-out infinite;
+}
+
+/* Download icon bounce */
+@keyframes download-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.group:hover .download-icon {
+  animation: download-bounce 0.7s ease-in-out infinite;
 }
 
 .explore-card:hover {
