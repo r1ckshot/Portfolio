@@ -160,7 +160,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center"
+      className="relative min-h-screen flex flex-col justify-center overflow-x-clip"
     >
       <div className="max-w-6xl mx-auto px-6 w-full pt-20 pb-8">
         {/* Available badge - centered */}
