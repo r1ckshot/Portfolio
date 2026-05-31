@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import type { IconType } from "react-icons";
 import { FiMail } from "react-icons/fi";
 import {
@@ -85,6 +86,15 @@ const ORBIT_CONFIG = [
 const EMAIL = "kapusticnyk.com@gmail.com";
 
 export function Contact() {
+  const [glowIndex, setGlowIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlowIndex((prev) => (prev + 1) % 8);
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="contact" className="pt-16 pb-6 px-6">
       {/* Section header */}
@@ -194,25 +204,28 @@ export function Contact() {
         </motion.p>
       </motion.div>
 
-      {/* Mobile: Icon grid */}
+      {/* Mobile: 2-column grid */}
       <div className="md:hidden max-w-sm mx-auto mt-6">
-        {/* Email button */}
-        <motion.a
-          href={`mailto:${EMAIL}`}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="group flex items-center justify-center gap-3 w-full py-4 mb-6 rounded-2xl bg-surface border border-primary/30 hover:border-primary/50 transition-all duration-300 solar-center"
-        >
-          <FiMail className="w-5 h-5 text-primary" />
-          <span className="text-sm text-text group-hover:text-primary transition-colors duration-300">
-            {EMAIL}
-          </span>
-        </motion.a>
+        <div className="grid grid-cols-2 gap-4">
+          {/* Email card first */}
+          <motion.a
+            href={`mailto:${EMAIL}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="group flex flex-col items-center gap-3 py-8 rounded-xl bg-surface border transition-all duration-700"
+            style={{
+              borderColor: glowIndex === 0 ? "rgba(76,175,80,0.5)" : "rgba(255,255,255,0.1)",
+              boxShadow: glowIndex === 0 ? "0 0 20px rgba(76,175,80,0.3), 0 0 60px rgba(76,175,80,0.1)" : "none",
+            }}
+          >
+            <FiMail className="w-8 h-8 text-text-secondary group-hover:text-primary group-hover:scale-110 transition-all duration-300" />
+            <span className="text-sm text-text-secondary group-hover:text-primary transition-colors duration-300">Email</span>
+          </motion.a>
 
-        {/* Social grid */}
-        <div className="flex flex-wrap justify-center gap-3">
+
+          {/* Social cards */}
           {SOCIALS.map((social, i) => (
             <motion.a
               key={social.label}
@@ -222,12 +235,16 @@ export function Contact() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group flex flex-col items-center gap-1.5 py-3 rounded-xl bg-surface border border-white/10 hover:border-primary/30 transition-all duration-300 w-20"
+              transition={{ duration: 0.4, delay: (i + 1) * 0.05 }}
+              className="group flex flex-col items-center gap-3 py-8 rounded-xl bg-surface border transition-all duration-700"
+              style={{
+                borderColor: glowIndex === i + 1 ? "rgba(76,175,80,0.5)" : "rgba(255,255,255,0.1)",
+                boxShadow: glowIndex === i + 1 ? "0 0 20px rgba(76,175,80,0.3), 0 0 60px rgba(76,175,80,0.1)" : "none",
+              }}
               aria-label={social.label}
             >
-              <social.icon className="w-5 h-5 text-text-secondary group-hover:text-primary transition-colors duration-300" />
-              <span className="text-xs text-text-secondary group-hover:text-primary transition-colors duration-300">
+              <social.icon className="w-8 h-8 text-text-secondary group-hover:text-primary group-hover:scale-110 transition-all duration-300" />
+              <span className="text-sm text-text-secondary group-hover:text-primary transition-colors duration-300">
                 {social.label}
               </span>
             </motion.a>
@@ -241,7 +258,7 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="md:hidden text-center text-lg text-text-secondary mt-4"
+        className="md:hidden text-center text-lg text-text-secondary mt-8"
       >
         Always open to new opportunities and interesting conversations.
       </motion.p>
