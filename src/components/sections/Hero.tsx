@@ -176,7 +176,7 @@ export function Hero() {
         </motion.div>
 
         {/* Main content - text left, photo right */}
-        <div className="flex flex-col-reverse lg:flex-row items-center lg:items-end gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-end gap-8 lg:gap-16">
           {/* Left - Text */}
           <div className="flex-1 text-center lg:text-left">
             <h1
@@ -195,6 +195,35 @@ export function Hero() {
               <span className="word inline-block" style={{ opacity: 0, transform: 'translateY(36px)' }}>&amp;</span>{" "}
               <span className="word inline-block" style={{ opacity: 0, transform: 'translateY(36px)' }}>AI</span>
             </h1>
+
+            {/* Photo block — mobile only, between heading and paragraph */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.0, ease: "easeOut" as const, delay: 0.9 }}
+              className="lg:hidden flex flex-col items-center gap-5 my-8"
+            >
+              <div className="relative w-[290px] h-[290px]">
+                <ParticleOrb />
+                <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-primary/20">
+                  <Image
+                    src="/Portfolio/photo.png"
+                    alt="Mykhailo Kapustianyk"
+                    fill
+                    className="object-cover object-top"
+                    priority
+                  />
+                </div>
+              </div>
+              <a
+                href="/Portfolio/cv.pdf"
+                download
+                className="group flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-text hover:border-primary/50 hover:text-primary transition-all duration-300"
+              >
+                Download CV
+                <FiDownload className="download-icon w-4 h-4" />
+              </a>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -230,12 +259,12 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right - Photo with particle orb */}
+          {/* Right - Photo with particle orb (desktop only) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.0, ease: "easeOut" as const, delay: 0.9 }}
-            className="flex-shrink-0 flex flex-col items-center gap-5"
+            className="hidden lg:flex flex-shrink-0 flex-col items-center gap-5"
           >
             <div className="relative w-[290px] h-[290px] md:w-[360px] md:h-[360px]">
               <ParticleOrb />
