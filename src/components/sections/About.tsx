@@ -45,15 +45,9 @@ const SHAPE_ICONS = [
 ];
 
 const slideVariants = {
-  enter: {
-    opacity: 0,
-  },
-  center: {
-    opacity: 1,
-  },
-  exit: {
-    opacity: 0,
-  },
+  enter: (dir: number) => ({ opacity: 0, x: dir * 40 }),
+  center: { opacity: 1, x: 0 },
+  exit: (dir: number) => ({ opacity: 0, x: dir * -40 }),
 };
 
 export function About() {
@@ -151,6 +145,7 @@ export function About() {
                     transition={{
                       duration: 0.35,
                       ease: [0.25, 0.1, 0.25, 1],
+                      x: { type: "tween" },
                     }}
                     className="group p-6 rounded-2xl bg-surface/90 backdrop-blur-sm border border-white/10 shadow-[0_4px_15px_rgba(76,175,80,0.08)] hover:border-primary/30 hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(76,175,80,0.12)] transition-all duration-500"
                   >
